@@ -3,6 +3,14 @@ const express = require('express')
 // 创建 express 应用
 const app = express()
 
+// 日志中间件
+const myLogger = function(req, res, next) {
+  console.log('myLogger')
+  next()
+}
+
+app.use(myLogger)
+
 // 监听 / 路径的 get 请求
 app.get('/', function(req, res) {
   res.send('hello node')
